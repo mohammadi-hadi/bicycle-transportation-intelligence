@@ -37,7 +37,7 @@ bgdf.crs=crs
 def oracle_connect():
     try:
         os.environ["ORACLE_HOME"] = "C:\instantclient_19_3"
-        db = cx_Oracle.connect(user=os.environ["ORACLE_USER"], password=os.environ["ORACLE_PASSWORD"], dsn=os.environ["ORACLE_DSN"],encoding='UTF-8')
+        db = cx_Oracle.connect(user=os.environ["ORACLE_USER"], password=os.environ["ORACLE_PASSWORD"], dsn=os.environ["ORACLE_DSN"], encoding='UTF-8')
         return db
 
     except cx_Oracle.DatabaseError as ora_exception:
@@ -267,7 +267,7 @@ import pandas as pd
 def oracle_connect():
     try:
         os.environ["ORACLE_HOME"] = "C:/instantclient_19_3"
-        db = cx_Oracle.connect(user=os.environ["ORACLE_USER"], password=os.environ["ORACLE_PASSWORD"], dsn=os.environ["ORACLE_DSN"],encoding='UTF-8')
+        db = cx_Oracle.connect(user=os.environ["ORACLE_USER"], password=os.environ["ORACLE_PASSWORD"], dsn=os.environ["ORACLE_DSN"], encoding='UTF-8')
         return db
 
     except cx_Oracle.DatabaseError as ora_exception:
