@@ -1,0 +1,14 @@
+streamlit
+pandas
+numpy
+geopandas
+shapely
+cx_Oracle
+scikit-learn
+matplotlib
+folium
+h3
+osmnx
+branca
+geojson
+ipython
