@@ -1,88 +1,46 @@
-<div align="center">
-
 # Bicycle Transportation Intelligence
 
-### Geospatial Analysis for Smart Bike-Sharing Systems
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)](https://streamlit.io/)
-
-*Data-driven insights for urban bicycle transportation planning*
-
----
-
-</div>
+A Streamlit operations dashboard for a bike-sharing system, combining live Oracle database queries with geospatial analysis of bikes, parking stations, and trips.
 
 ## Overview
 
-This project provides geospatial analysis tools for intelligent bicycle transportation systems. It combines spatial data processing with real-time database integration to analyze cycling patterns and optimize bike-sharing operations.
+This project was built for the day-to-day operations of a city bike-share service. It reads current lock (bike), parking station, and trip data from the operator's Oracle database and presents four operational views in a Streamlit app:
 
-## Features
+- **Parking alarms** — flags stations whose bike count falls below or above configurable thresholds.
+- **Rebalancing suggestions** — ranks stations by how many bikes should be dispatched to or collected from them.
+- **Out-of-zone bikes** — uses geofencing (point-in-polygon tests with a buffer) to count and list bikes outside the allowed service area.
+- **Collection suggestions** — maps bikes with no trips in the last 24 hours on an H3 hexagon choropleth so idle bikes can be collected.
 
-- **Geospatial Analysis**: Process cycling routes and allowed areas using GeoPandas
-- **Database Integration**: Real-time data retrieval from Oracle databases
-- **Interactive Dashboard**: Streamlit-based visualization interface
-- **Spatial Operations**: Buffer zones, polygon processing, and route analysis
+## Data / Methods
 
-## Technology Stack
+- Live data is pulled with `cx_Oracle` and `pandas.read_sql` from the operator's lock, parking, and trip tables.
+- `geopandas` and `shapely` handle the service-area polygon, buffering, and point-in-polygon checks; coordinates are bounded to the city area defined at the top of the script.
+- `h3` aggregates bike locations into hexagonal bins, rendered as `folium` choropleth and heat maps embedded in the Streamlit page.
+- `scikit-learn`'s `MinMaxScaler` normalizes station metrics for the alarm and rebalancing logic.
+- The user interface labels are in Persian, matching the deployment context.
 
-- **GeoPandas**: Geospatial data manipulation
-- **Shapely**: Geometric operations
-- **Streamlit**: Interactive web dashboards
-- **cx_Oracle**: Oracle database connectivity
-- **scikit-learn**: Data preprocessing and normalization
-
-## Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/mohammadi-hadi/Bicycle-transportation-intelligence-.git
-cd Bicycle-transportation-intelligence-
-
-# Install dependencies
-pip install pandas numpy geopandas shapely streamlit scikit-learn cx_Oracle
-
-# Run the application
-streamlit run "Bicycle transportation intelligentization project.py"
-```
-
-## Configuration
-
-The system is configured for a specific city area:
-- Latitude range: 29.49° - 29.84°
-- Longitude range: 52.39° - 52.68°
-
-Modify the coordinate boundaries in the script to adapt for different regions.
-
-## Repository Structure
+## Repository structure
 
 ```
 Bicycle-transportation-intelligence-/
-├── Bicycle transportation intelligentization project.py  # Main application
-├── LICENSE                                               # MIT License
-├── CONTRIBUTING.md                                       # Contribution guidelines
-└── README.md                                            # This file
+├── Bicycle transportation intelligentization project.py   # Streamlit app (all logic)
+├── CONTRIBUTING.md                                        # Contribution guidelines
+├── LICENSE                                                # MIT License
+└── README.md                                              # This file
 ```
 
-## Requirements
+## How to run
 
-- Python 3.8+
-- pandas
-- numpy
-- geopandas
-- shapely
-- streamlit
-- cx_Oracle
-- scikit-learn
+The app requires access to the operator's Oracle database, so it will not run as-is outside that environment. To adapt it:
+
+```bash
+pip install pandas numpy geopandas shapely streamlit scikit-learn cx_Oracle folium h3 osmnx branca
+
+streamlit run "Bicycle transportation intelligentization project.py"
+```
+
+Update the Oracle connection settings in `oracle_connect()` and the city coordinate bounds (`city_lat1/2`, `city_long1/2`) for your own deployment.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For questions or collaboration inquiries:
-- **Hadi Mohammadi** - Utrecht University
-- **Email**: [h.mohammadi@uu.nl](mailto:h.mohammadi@uu.nl)
-- **Website**: [mohammadi.cv](https://mohammadi.cv)
+Released under the MIT License. See [LICENSE](LICENSE) for details.
