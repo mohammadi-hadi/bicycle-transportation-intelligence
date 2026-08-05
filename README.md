@@ -2,6 +2,7 @@
 
 # Bicycle Transportation Intelligence Dashboard
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21803835.svg)](https://doi.org/10.5281/zenodo.21803835)
 [![Python](https://img.shields.io/badge/Python-3.x-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-FF4B4B.svg)](https://streamlit.io/)

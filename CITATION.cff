@@ -8,6 +8,7 @@ authors:
     orcid: "https://orcid.org/0000-0003-0860-9200"
 repository-code: "https://github.com/mohammadi-hadi/bicycle-transportation-intelligence"
 license: MIT
+doi: 10.5281/zenodo.21803835
 version: 1.0.0
 date-released: "2026-08-05"
 abstract: "Streamlit operations dashboard for a bike-sharing system: live Oracle data, geofencing with GeoPandas, and H3/folium maps for rebalancing and collection."
