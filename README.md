@@ -62,6 +62,22 @@ bicycle-transportation-intelligence/
 └── README.md                                              # This file
 ```
 
+## Citation
+
+If this project is useful in your research, please cite it (see
+[CITATION.cff](CITATION.cff)):
+
+```bibtex
+@software{mohammadi_bicycle_transportation_intelligence,
+  author  = {Mohammadi, Hadi},
+  title   = {Bicycle Transportation Intelligence Dashboard},
+  url     = {https://github.com/mohammadi-hadi/bicycle-transportation-intelligence},
+  doi     = {10.5281/zenodo.21803835},
+  version = {1.0.0},
+  year    = {2026}
+}
+```
+
 ## License
 
 This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
