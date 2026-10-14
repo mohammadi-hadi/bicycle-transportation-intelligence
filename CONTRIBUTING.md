@@ -21,5 +21,4 @@ Please use GitHub Issues to report bugs. Include:
 ## Questions
 
 For questions, please contact:
-- **Email**: h.mohammadi@uu.nl
 - **Website**: [mohammadi.cv](https://mohammadi.cv)
